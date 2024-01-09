@@ -1,5 +1,5 @@
 # tomtombrumbrum
-This library has the goal to simplify the usage of TomTom API.
+This library aims to simplify the usage of the TomTom API.
 <br>
 To use their API you need an API key. 
 <br>
