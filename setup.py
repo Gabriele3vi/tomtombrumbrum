@@ -17,7 +17,7 @@ setup(
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     packages=find_packages(),
-    install_requires=['json', 'requests'],
+    install_requires=['requests'],
     keywords=['python', 'tomtom', 'api', 'drive'],
     classifiers=[
         "Development Status :: 1 - Planning",
