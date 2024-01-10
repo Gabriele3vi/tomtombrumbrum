@@ -1,0 +1,14 @@
+Disclaimer
+
+This Python library has been created to enhance the ease of integrating with the API provided by TomTom. By utilizing this library, developers can streamline and simplify the process of interacting with TomTom's services.
+
+Important Notes:
+
+-No Official Affiliation: tomtombrumbrum is an independent project and is not officially affiliated with TomTom. While efforts have been made to ensure compatibility with TomTom's API, it is essential to acknowledge that tomtombrumbrum is a third-party library.
+
+-API Changes: TomTom may update, modify, or deprecate its API endpoints or functionalities. As a result, this  might require updates to maintain compatibility. We will strive to keep tomtombrumbrum current, but users are encouraged to stay informed about TomTom's API changes.
+
+-Usage Responsibility: Developers are responsible for adhering to TomTom's terms of service and usage policies when utilizing tomtombrumbrum. Ensure that your application complies with [TomTom's guidelines and policies](https://developer.tomtom.com/terms-and-conditions).
+
+-Support and Maintenance: While we aim to provide support for tomtombrumbrum, we cannot guarantee continuous maintenance or immediate response to issues. Community contributions and support are always welcome.
+

@@ -1,9 +1,11 @@
 
 from setuptools import setup, find_packages
 
+with open("README.md", 'r') as f:
+    LONG_DESCRIPTION = f.read()
+
 VERSION = '0.0.1'
 DESCRIPTION = 'TomTom API library'
-LONG_DESCRIPTION = 'A package to simplify the usage of the TomTom API'
 
 # Setting up
 setup(
@@ -14,6 +16,7 @@ setup(
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
+    long_description_content_type = "text/markdown",
     packages=find_packages(),
     install_requires=['json', 'requests'],
     keywords=['python', 'tomtom', 'api', 'drive'],
