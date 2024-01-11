@@ -1,1 +1,1 @@
-from tomtombrumbrum import BrumBrum
+from tomtombrumbrum .tomtombrumbrum import BrumBrum
