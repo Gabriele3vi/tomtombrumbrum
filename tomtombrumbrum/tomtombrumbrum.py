@@ -1,11 +1,31 @@
 import requests
 import json
+import numpy as np
 
 class BrumBrum():
     def __init__(self, API_KEY, API_VERSION = 2):
         self.API_KEY = API_KEY
         self.API_VERSION = API_VERSION
         self.committedMatrices = []
+
+    def from_json_to_matrix(self, json_res):
+        data = json_res["data"]
+        n_origins = data[-1]["originIndex"] + 1
+        n_destinations = data[-1]["destinationIndex"] + 1
+
+        matrix = np.zeros((n_origins, n_destinations))
+
+        for cell in data:
+            o = cell["originIndex"]
+            d = cell["destinationIndex"]
+            if "routeSummary" in cell.keys():
+                travel_time_in_seconds = cell["routeSummary"]["travelTimeInSeconds"]
+                matrix[o, d] = travel_time_in_seconds / 60
+            else:
+                matrix[o, d] = 9999999
+
+        return matrix
+    
 
     def get_sync_matrix(self, origins, destinations):
         url = f"https://api.tomtom.com/routing/matrix/{self.API_VERSION}?key={self.API_KEY}"
@@ -15,12 +35,13 @@ class BrumBrum():
             "destinations": destinations,
             "options": {}
         }
-        r = requests.post(url, json=payload, headers=headers)
+        req = requests.post(url, json=payload, headers=headers)
 
-        if r.status_code == 200:
-            return r.text
+        if req.status_code == 200:
+            body = json.loads(req.text)
+            return body
         else:
-            return "Erroreeeee"
+            return "Something went wrong"
     
     def async_matrix_submission(self, origins, destinations):
         pass
@@ -30,6 +51,19 @@ class BrumBrum():
     
     def get_async_matrix(self, jobID):
         pass
+
+
+    def from_latlng_to_point(self, latlngs):
+        points = []
+
+        for c in latlngs:
+            current_point = {
+                "point": {"latitude": c[0], "longitude": c[1]}
+            }
+            
+            points.append(current_point)
+
+        return points
     
     def geocode(self, address, return_type = "json", full_res = False):
         #to check if "address" is a single string or a list of addresses
@@ -67,7 +101,6 @@ class BrumBrum():
                 if numResults != 1:
                   coordinates_list.append(None)
                   all_found = False
-
                 #else return the coords
                 else:
                   position = body["results"][0]["position"]
